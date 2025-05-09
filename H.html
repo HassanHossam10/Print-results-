@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NONA - متجر الزهور والهدايا</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            direction: rtl;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 120px;
+            height: auto;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-right: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ff6b6b;
+        }
+        
+        .auth-buttons a {
+            text-decoration: none;
+            margin-left: 15px;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .login-btn {
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        .login-btn:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .signup-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: 1px solid #ff6b6b;
+        }
+        
+        .signup-btn:hover {
+            background-color: #ff5252;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            background-color: #fff5f5;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .shop-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .shop-btn:hover {
+            background-color: #ff5252;
+        }
+        
+        /* Featured Products */
+        .featured-products {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #333;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        .product-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .product-price {
+            font-weight: 600;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .add-to-cart {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #ff5252;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #ff6b6b;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ff6b6b;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        /* About Us Page */
+        .about-us {
+            padding: 60px 0;
+            background-color: #fff;
+        }
+        
+        .team-members {
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .team-member h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .team-member p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        /* Login Form */
+        .login-section {
+            padding: 60px 0;
+            background-color: #fff;
+        }
+        
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #ff6b6b;
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .form-submit:hover {
+            background-color: #ff5252;
+        }
+        
+        .form-footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .form-footer a {
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Search Bar */
+        .search-container {
+            display: flex;
+            margin-left: 20px;
+        }
+        
+        .search-input {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            width: 200px;
+            font-size: 14px;
+        }
+        
+        .search-button {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="a1.jpg" alt="NONA FLOWER SHOP & GIFT" style="background-image: url('/api/placeholder/150/150'); border-radius: 50%;" />
+                <!-- سيتم استبدال هذا بشعار NONA عند التنفيذ الفعلي للموقع -->
+            </div>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="ابحث عن منتجات..." />
+                <button class="search-button">بحث</button>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#categories">التصنيفات</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            
+            <div class="auth-buttons">
+                <a href="#login" class="login-btn">تسجيل الدخول</a>
+                <a href="#signup" class="signup-btn">إنشاء حساب</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with NONA branding -->
+    <section class="hero">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <img src="a1.jpg" alt="NONA FLOWER SHOP & GIFT" style="border-radius: 50%; max-width: 200px;" />
+                <!-- هذه الصورة تمثل شعار NONA من الصورة الأولى التي أرسلتها -->
+            </div>
+            <h1>NONA متجر الزهور والهدايا</h1>
+            <p>أجمل باقات الورد والهدايا المميزة لجميع المناسبات</p>
+            <a href="#shop" class="shop-btn">تسوق الآن</a>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title">منتجاتنا المميزة</h2>
+            <div class="products-grid">
+                <!-- Product 1 - Red Roses Bouquet -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="A4.jpg" alt="باقة الورد الأحمر" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">باقة الورد الأحمر</h3>
+                        <p class="product-price">250 جنيه</p>
+                        <button class="add-to-cart">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 - Red Roses with Butterfly -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="A5.jpg" alt="بوكيه ورد أحمر مع فراشة" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">بوكيه ورد أحمر مع فراشة</h3>
+                        <p class="product-price">300 جنيه</p>
+                        <button class="add-to-cart">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 - Special Occasions Gift -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="A3.jpg" alt="هدايا مناسبات خاصة" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">هدايا مناسبات خاصة</h3>
+                        <p class="product-price">400 جنيه</p>
+                        <button class="add-to-cart">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 - Wedding Decoration -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="A2.jpg" alt="تزيين حفلات وخطوبة" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">تزيين حفلات وخطوبة</h3>
+                        <p class="product-price">500 جنيه</p>
+                        <button class="add-to-cart">أضف إلى السلة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about-us">
+        <div class="container">
+            <h2 class="section-title">من نحن</h2>
+            <p style="text-align: center; margin-bottom: 30px;">متجر NONA للزهور والهدايا - نقدم أجمل باقات الورد والهدايا لجميع المناسبات</p>
+            
+            <div class="team-members">
+                <h3 style="text-align: center; margin-bottom: 20px;">فريق العمل</h3>
+                
+                <div class="team-member">
+                    <h3>أحمد وجيه محمد محمد</h3>
+                    <p>رقم الجلوس: 69236</p>
+                    <p>قسم: موارد بشرية</p>
+                    <p>انتساب</p>
+                </div>
+                
+                <div class="team-member">
+                    <h3>نرمين وليد محمد احمد</h3>
+                    <p>رقم الجلوس: 69018</p>
+                    <p>قسم: موارد بشرية</p>
+                    <p>انتساب</p>
+                </div>
+                
+                <div class="team-member">
+                    <h3>ليلي محمد فاروق</h3>
+                    <p>رقم الجلوس: 69050</p>
+                    <p>قسم: موارد بشرية</p>
+                    <p>انتساب</p>
+                </div>
+                
+                <div class="team-member">
+                    <h3>ماهينور سامى ادور ثابت محمود</h3>
+                    <p>رقم الجلوس: 60039</p>
+                    <p>قسم: تسويق</p>
+                    <p>انتظام "وجدى مع انتساب لعدم وجد مكان فى انتظام"</p>
+                </div>
+                
+                <div class="team-member">
+                    <h3>ميار عادل محمود</h3>
+                    <p>رقم الجلوس: 69217</p>
+                    <p>قسم: موارد بشرية</p>
+                    <p>انتساب</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Form -->
+    <section id="login" class="login-section">
+        <div class="container">
+            <h2 class="section-title">تسجيل الدخول</h2>
+            
+            <div class="form-container">
+                <form>
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">كلمة المرور</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">تسجيل الدخول</button>
+                    
+                    <div class="form-footer">
+                        <p>ليس لديك حساب؟ <a href="#signup">إنشاء حساب جديد</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sign Up Form -->
+    <section id="signup" class="login-section">
+        <div class="container">
+            <h2 class="section-title">إنشاء حساب جديد</h2>
+            
+            <div class="form-container">
+                <form>
+                    <div class="form-group">
+                        <label for="first-name">الاسم الأول</label>
+                        <input type="text" id="first-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="last-name">الاسم الأخير</label>
+                        <input type="text" id="last-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-email">البريد الإلكتروني</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-password">كلمة المرور</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">تأكيد كلمة المرور</label>
+                        <input type="password" id="confirm-password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="country">الدولة</label>
+                        <input type="text" id="country" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">العنوان</label>
+                        <input type="text" id="address" required>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">إنشاء حساب</button>
+                    
+                    <div class="form-footer">
+                        <p>لديك حساب بالفعل؟ <a href="#login">تسجيل الدخول</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us -->
+    <section id="contact" class="login-section">
+        <div class="container">
+            <h2 class="section-title">اتصل بنا</h2>
+            
+            <div class="form-container">
+                <p style="text-align: center; margin-bottom: 20px;">يمكنك التواصل معنا عبر البريد الإلكتروني</p>
+                <p style="text-align: center; font-weight: bold; color: #ff6b6b;">info@nonaflowers.com</p>
+                <p style="text-align: center; margin-top: 10px;">أو عبر الهاتف: 01288469989</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>NONA متجر الزهور</h3>
+                    <ul>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>التصنيفات</h3>
+                    <ul>
+                        <li><a href="#">باقات ورد</a></li>
+                        <li><a href="#">هدايا</a></li>
+                        <li><a href="#">مناسبات خاصة</a></li>
+                        <li><a href="#">تزيين حفلات</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>تواصل معنا</h3>
+                    <ul>
+                        <li>الهاتف: 01288469989</li>
+                        <li>البريد الإلكتروني: info@nonaflowers.com</li>
+                        <li>العنوان: القاهرة، مصر</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 NONA FLOWER SHOP & GIFT - جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
